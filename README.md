@@ -1,5 +1,8 @@
 # ADmyBRAND AI Suite - AI-Powered Marketing Platform
 
+> **⚠️ AI-Generated Project Notice**  
+> This project was created in approximately 2 hours using AI assistance (Cursor IDE, GitHub Copilot, and ChatGPT). While the codebase is functional and follows best practices, comprehensive testing is still pending. Please test thoroughly before using in production environments.
+
 A stunning, modern landing page for ADmyBRAND AI Suite - a fictional AI-powered marketing tool. Built with Next.js 14+, TypeScript, and Tailwind CSS, featuring a comprehensive component library and interactive pricing calculator.
 
 ## 🚀 Live Demo
@@ -81,6 +84,22 @@ A stunning, modern landing page for ADmyBRAND AI Suite - a fictional AI-powered 
 
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Testing
+
+```bash
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests for CI
+npm run test:ci
+```
 
 ### Build for Production
 
@@ -166,6 +185,46 @@ The project includes a comprehensive component library with 20+ reusable compone
 ### Layout Components
 - `Divider` - Section separators
 - `ProgressBar` - Progress indicators
+
+## 🧪 Testing
+
+The project includes comprehensive testing setup with Jest and React Testing Library:
+
+### Test Coverage
+- **Component Tests**: All UI components are tested for rendering and interactions
+- **Page Tests**: Main landing page and calculator page functionality
+- **Integration Tests**: Form submissions and user interactions
+- **Accessibility Tests**: ARIA attributes and keyboard navigation
+
+### Test Structure
+```
+src/
+├── components/ui/__tests__/     # UI component tests
+├── app/__tests__/              # Page component tests
+├── app/calculator/__tests__/    # Calculator page tests
+└── __tests__/utils/            # Test utilities and helpers
+```
+
+### Running Tests
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (development)
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+
+# Run tests for CI/CD
+npm run test:ci
+```
+
+### Test Configuration
+- **Jest**: Configured for Next.js with TypeScript support
+- **React Testing Library**: For component testing and user interactions
+- **Coverage Threshold**: 70% minimum coverage required
+- **CI/CD**: Automated testing on GitHub Actions
 
 ## 🚀 Deployment
 
