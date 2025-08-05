@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Button, Card, Modal, Input } from "../components/ui";
+import { Button, Card, Modal, Input, Badge } from "../components/ui";
 import { FeatureIcon } from "../components/landing";
 
 // Main Landing Page
@@ -155,6 +155,7 @@ export default function Home() {
               <a href="#features" className="text-foreground hover:text-primary transition-colors">Features</a>
               <a href="#pricing" className="text-foreground hover:text-primary transition-colors">Pricing</a>
               <a href="#testimonials" className="text-foreground hover:text-primary transition-colors">Testimonials</a>
+              <a href="#resources" className="text-foreground hover:text-primary transition-colors">Resources</a>
               <a href="#faq" className="text-foreground hover:text-primary transition-colors">FAQ</a>
             </div>
             <div className="flex items-center space-x-4">
@@ -191,10 +192,25 @@ export default function Home() {
           {/* Hero Image/Video Placeholder */}
           <div className="mt-16 relative">
             <Card variant="glass" className="rounded-3xl p-8 max-w-4xl mx-auto">
-              <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🚀</div>
-                  <p className="text-lg text-muted">Interactive Demo Coming Soon</p>
+              <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                {/* Animated background elements */}
+                <div className="absolute inset-0">
+                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-pulse"></div>
+                  <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-primary/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+                  <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-primary/25 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                </div>
+                
+                {/* Main demo content */}
+                <div className="text-center relative z-10">
+                  <div className="text-6xl mb-4 animate-bounce">🚀</div>
+                  <h3 className="text-2xl font-bold mb-2">Interactive Demo</h3>
+                  <p className="text-lg text-muted mb-4">Experience the power of AI-driven marketing</p>
+                  <div className="flex justify-center space-x-4">
+                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 bg-primary/60 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-3 h-3 bg-primary/40 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -272,6 +288,21 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          
+          {/* Interactive Pricing Calculator CTA */}
+          <div className="text-center mt-16 animate-slide-up">
+            <Card variant="glass" className="p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4">
+                Need a Custom Plan?
+              </h3>
+              <p className="text-muted mb-6">
+                Use our interactive pricing calculator to customize your plan based on your team size, features, and add-ons.
+              </p>
+              <Button size="lg" onClick={() => window.location.href = '/calculator'}>
+                Try Interactive Calculator →
+              </Button>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -347,6 +378,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blog/Resources Section */}
+      <section id="resources" className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Latest{" "}
+              <span className="gradient-text">Resources</span>
+            </h2>
+            <p className="text-xl text-muted max-w-3xl mx-auto">
+              Stay updated with the latest marketing trends, AI insights, and best practices.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "AI Marketing Trends 2025",
+                excerpt: "Discover the top AI marketing trends that will shape the industry in 2025 and beyond.",
+                category: "Trends",
+                readTime: "5 min read",
+                image: "📈"
+              },
+              {
+                title: "How to Create Engaging Content with AI",
+                excerpt: "Learn practical strategies for using AI to create compelling content that converts.",
+                category: "Tutorial",
+                readTime: "8 min read",
+                image: "✍️"
+              },
+              {
+                title: "Building Your Brand with AI Tools",
+                excerpt: "A comprehensive guide to building a strong brand identity using AI-powered tools.",
+                category: "Guide",
+                readTime: "12 min read",
+                image: "🎨"
+              }
+            ].map((post, index) => (
+              <Card key={index} variant="glass" className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="text-4xl mb-4">{post.image}</div>
+                <div className="flex items-center space-x-2 mb-3">
+                  <Badge variant="primary" className="text-xs">
+                    {post.category}
+                  </Badge>
+                  <span className="text-xs text-muted">{post.readTime}</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{post.title}</h3>
+                <p className="text-muted mb-4">{post.excerpt}</p>
+                <Button variant="outline" size="sm">
+                  Read More →
+                </Button>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button variant="outline" size="lg">
+              View All Resources
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-secondary py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -409,15 +502,30 @@ export default function Home() {
           <p className="text-muted mb-6">
             Get 14 days of full access to all features. No credit card required.
           </p>
-          <div className="space-y-4">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-            />
-            <Button className="w-full" onClick={() => setIsModalOpen(false)}>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            const email = formData.get('email') as string;
+            if (email && email.includes('@')) {
+              alert(`Thank you! We've sent a confirmation email to ${email}`);
+              setIsModalOpen(false);
+            }
+          }} className="space-y-4">
+            <div>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Please enter a valid email address"
+                className="w-full"
+              />
+            </div>
+            <Button type="submit" className="w-full">
               Start Free Trial
             </Button>
-          </div>
+          </form>
         </div>
       </Modal>
     </div>
