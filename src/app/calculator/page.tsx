@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button, Card, Input, Checkbox, Select, Badge } from "../../components/ui";
 
 interface PricingPlan {
@@ -146,14 +147,29 @@ export default function PricingCalculator() {
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1 
+              className="text-4xl sm:text-5xl font-bold text-foreground mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
               Interactive Pricing Calculator
-            </h1>
-            <p className="text-xl text-muted max-w-2xl mx-auto">
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-muted max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
               Customize your plan and see real-time pricing. Find the perfect combination for your team.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Input Controls */}
@@ -267,38 +283,65 @@ export default function PricingCalculator() {
                   </Button>
                 </div>
                 
-                {showAddOns && (
-                  <div className="space-y-4 animate-fade-in">
-                    {addOns.map((addOn) => (
-                      <div
-                        key={addOn.id}
-                        className={`p-4 rounded-lg border transition-all duration-300 ${
-                          selectedAddOns.includes(addOn.id)
-                            ? "border-primary bg-primary/5"
-                            : "border-border hover:border-primary/50"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex-1">
-                            <div className="flex items-center space-x-3">
-                              <Checkbox
-                                checked={selectedAddOns.includes(addOn.id)}
-                                onChange={() => handleAddOnToggle(addOn.id)}
-                              />
-                              <div>
-                                <h4 className="font-medium">{addOn.name}</h4>
-                                <p className="text-sm text-muted">{addOn.description}</p>
+                <AnimatePresence>
+                  {showAddOns && (
+                    <motion.div 
+                      className="space-y-4"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    >
+                      {addOns.map((addOn, index) => (
+                        <motion.div
+                          key={addOn.id}
+                          className={`p-4 rounded-lg border ${
+                            selectedAddOns.includes(addOn.id)
+                              ? "border-primary bg-primary/5"
+                              : "border-border hover:border-primary/50"
+                          }`}
+                          initial={{ opacity: 0, x: -20, scale: 0.9 }}
+                          animate={{ opacity: 1, x: 0, scale: 1 }}
+                          transition={{ 
+                            duration: 0.4, 
+                            delay: index * 0.1,
+                            ease: "easeOut"
+                          }}
+                          whileHover={{ 
+                            scale: 1.02,
+                            y: -2
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1">
+                              <div className="flex items-center space-x-3">
+                                <Checkbox
+                                  checked={selectedAddOns.includes(addOn.id)}
+                                  onChange={() => handleAddOnToggle(addOn.id)}
+                                />
+                                <div>
+                                  <h4 className="font-medium">{addOn.name}</h4>
+                                  <p className="text-sm text-muted">{addOn.description}</p>
+                                </div>
                               </div>
                             </div>
+                            <motion.div 
+                              className="text-right"
+                              animate={{ 
+                                scale: selectedAddOns.includes(addOn.id) ? 1.1 : 1,
+                                color: selectedAddOns.includes(addOn.id) ? "#6366f1" : "inherit"
+                              }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <p className="font-semibold">${addOn.price}/month</p>
+                            </motion.div>
                           </div>
-                          <div className="text-right">
-                            <p className="font-semibold">${addOn.price}/month</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Card>
             </div>
 
@@ -307,12 +350,30 @@ export default function PricingCalculator() {
               <Card variant="glass" className="p-8 text-center">
                 <h2 className="text-2xl font-semibold mb-2">Your Custom Plan</h2>
                 <div className="mb-6">
-                  <div className={`text-5xl font-bold text-primary transition-all duration-500 ${
-                    isCalculating ? 'scale-110' : 'scale-100'
-                  }`}>
+                  <motion.div 
+                    className="text-5xl font-bold text-primary"
+                    key={totalPrice}
+                    initial={{ scale: 1 }}
+                    animate={{ 
+                      scale: isCalculating ? 1.1 : 1,
+                      color: isCalculating ? "#8b5cf6" : "#6366f1"
+                    }}
+                    transition={{ 
+                      duration: 0.3,
+                      ease: "easeInOut"
+                    }}
+                  >
                     ${totalPrice}
-                  </div>
-                  <div className="text-muted">per month</div>
+                  </motion.div>
+                  <motion.div 
+                    className="text-muted"
+                    animate={{ 
+                      opacity: isCalculating ? 0.7 : 1
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    per month
+                  </motion.div>
                 </div>
 
                 <div className="space-y-3 text-left mb-6">

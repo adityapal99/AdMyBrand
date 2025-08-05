@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button, Card, Modal, Input, Badge } from "../components/ui";
 import { FeatureIcon } from "../components/landing";
 
@@ -169,52 +170,206 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
               Transform Your{" "}
               <span className="gradient-text">Marketing</span>
               <br />
               with AI Power
-            </h1>
-            <p className="text-xl md:text-2xl text-muted mb-8 max-w-3xl mx-auto">
+            </motion.h1>
+            <motion.p 
+              className="text-xl md:text-2xl text-muted mb-8 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
               Create stunning campaigns, automate workflows, and boost your brand's success with our AI-powered marketing suite.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={() => setIsModalOpen(true)}>
-                Start Free Trial
-              </Button>
-              <Button variant="outline" size="lg">
-                Watch Demo
-              </Button>
-            </div>
-          </div>
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" onClick={() => setIsModalOpen(true)}>
+                  Start Free Trial
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="lg">
+                  Watch Demo
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
           
           {/* Hero Image/Video Placeholder */}
-          <div className="mt-16 relative">
+          <motion.div 
+            className="mt-16 relative"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          >
             <Card variant="glass" className="rounded-3xl p-8 max-w-4xl mx-auto">
               <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
                 {/* Animated background elements */}
                 <div className="absolute inset-0">
-                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-pulse"></div>
-                  <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                  <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-primary/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                  <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-primary/25 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <motion.div 
+                    className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full"
+                    animate={{ 
+                      scale: [1, 1.5, 1],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  <motion.div 
+                    className="absolute top-1/3 right-1/3 w-3 h-3 bg-primary/20 rounded-full"
+                    animate={{ 
+                      scale: [1, 1.3, 1],
+                      opacity: [0.2, 0.6, 0.2]
+                    }}
+                    transition={{ 
+                      duration: 2.5, 
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  />
+                  <motion.div 
+                    className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-primary/40 rounded-full"
+                    animate={{ 
+                      scale: [1, 2, 1],
+                      opacity: [0.4, 1, 0.4]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                  />
+                  <motion.div 
+                    className="absolute top-1/2 right-1/4 w-2 h-2 bg-primary/25 rounded-full"
+                    animate={{ 
+                      scale: [1, 1.4, 1],
+                      opacity: [0.25, 0.7, 0.25]
+                    }}
+                    transition={{ 
+                      duration: 2.2, 
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.3
+                    }}
+                  />
                 </div>
                 
                 {/* Main demo content */}
-                <div className="text-center relative z-10">
-                  <div className="text-6xl mb-4 animate-bounce">🚀</div>
-                  <h3 className="text-2xl font-bold mb-2">Interactive Demo</h3>
-                  <p className="text-lg text-muted mb-4">Experience the power of AI-driven marketing</p>
-                  <div className="flex justify-center space-x-4">
-                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
-                    <div className="w-3 h-3 bg-primary/60 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-3 h-3 bg-primary/40 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
-                </div>
+                <motion.div 
+                  className="text-center relative z-10"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                >
+                  <motion.div 
+                    className="text-6xl mb-4"
+                    animate={{ 
+                      y: [0, -10, 0],
+                      rotate: [0, 5, -5, 0]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    🚀
+                  </motion.div>
+                  <motion.h3 
+                    className="text-2xl font-bold mb-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.4 }}
+                  >
+                    Interactive Demo
+                  </motion.h3>
+                  <motion.p 
+                    className="text-lg text-muted mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.6 }}
+                  >
+                    Experience the power of AI-driven marketing
+                  </motion.p>
+                  <motion.div 
+                    className="flex justify-center space-x-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 1.8 }}
+                  >
+                    <motion.div 
+                      className="w-3 h-3 bg-primary rounded-full"
+                      animate={{ 
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    <motion.div 
+                      className="w-3 h-3 bg-primary/60 rounded-full"
+                      animate={{ 
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.2
+                      }}
+                    />
+                    <motion.div 
+                      className="w-3 h-3 bg-primary/40 rounded-full"
+                      animate={{ 
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.4
+                      }}
+                    />
+                  </motion.div>
+                </motion.div>
               </div>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -231,15 +386,58 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
             {features.map((feature, index) => (
-              <Card key={index} variant="glass" className="text-center animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <FeatureIcon icon={feature.icon} className="mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-muted">{feature.description}</p>
-              </Card>
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 50, scale: 0.9 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: {
+                      duration: 0.6,
+                      ease: "easeOut"
+                    }
+                  }
+                }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <Card variant="glass" className="text-center">
+                  <motion.div
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.1
+                    }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <FeatureIcon icon={feature.icon} className="mx-auto mb-4" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-muted">{feature.description}</p>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -256,53 +454,146 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.3
+                }
+              }
+            }}
+          >
             {pricingPlans.map((plan, index) => (
-              <Card key={index} variant="glass" className={`relative ${plan.popular ? 'ring-2 ring-primary' : ''} animate-scale-in`} style={{ animationDelay: `${index * 0.2}s` }}>
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 50, scale: 0.9 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: {
+                      duration: 0.8,
+                      ease: "easeOut"
+                    }
+                  }
+                }}
+                whileHover={{ 
+                  y: -15,
+                  scale: 1.03,
+                  transition: { duration: 0.4 }
+                }}
+              >
+                <Card variant="glass" className={`relative ${plan.popular ? 'ring-2 ring-primary' : ''}`}>
+                  {plan.popular && (
+                    <motion.div 
+                      className="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.5, duration: 0.5 }}
+                    >
+                      <motion.span 
+                        className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold"
+                        animate={{ 
+                          scale: [1, 1.05, 1],
+                          y: [0, -2, 0]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        Most Popular
+                      </motion.span>
+                    </motion.div>
+                  )}
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                    <div className="mb-4">
+                      <span className="text-4xl font-bold">{plan.price}</span>
+                      <span className="text-muted">{plan.period}</span>
+                    </div>
+                    <p className="text-muted mb-6">{plan.description}</p>
+                    <ul className="space-y-3 mb-8 text-left">
+                      {plan.features.map((feature, featureIndex) => (
+                        <motion.li 
+                          key={featureIndex} 
+                          className="flex items-center"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.8 + featureIndex * 0.1 }}
+                        >
+                          <span className="text-primary mr-2">✓</span>
+                          {feature}
+                        </motion.li>
+                      ))}
+                    </ul>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button className="w-full">
+                        Get Started
+                      </Button>
+                    </motion.div>
                   </div>
-                )}
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    <span className="text-muted">{plan.period}</span>
-                  </div>
-                  <p className="text-muted mb-6">{plan.description}</p>
-                  <ul className="space-y-3 mb-8 text-left">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <span className="text-primary mr-2">✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full">
-                    Get Started
-                  </Button>
-                </div>
-              </Card>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           
           {/* Interactive Pricing Calculator CTA */}
-          <div className="text-center mt-16 animate-slide-up">
-            <Card variant="glass" className="p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold mb-4">
-                Need a Custom Plan?
-              </h3>
-              <p className="text-muted mb-6">
-                Use our interactive pricing calculator to customize your plan based on your team size, features, and add-ons.
-              </p>
-              <Button size="lg" onClick={() => window.location.href = '/calculator'}>
-                Try Interactive Calculator →
-              </Button>
-            </Card>
-          </div>
+          <motion.div 
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <motion.div
+              whileHover={{ 
+                scale: 1.02,
+                y: -5
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card variant="glass" className="p-8 max-w-2xl mx-auto">
+                <motion.h3 
+                  className="text-2xl font-bold mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                >
+                  Need a Custom Plan?
+                </motion.h3>
+                <motion.p 
+                  className="text-muted mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
+                >
+                  Use our interactive pricing calculator to customize your plan based on your team size, features, and add-ons.
+                </motion.p>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button size="lg" onClick={() => window.location.href = '/calculator'}>
+                    Try Interactive Calculator →
+                  </Button>
+                </motion.div>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -320,36 +611,63 @@ export default function Home() {
           </div>
           
           <div className="relative">
-            <div className="flex overflow-hidden">
+            <AnimatePresence mode="wait">
               {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className={`w-full flex-shrink-0 transition-transform duration-500 ${
-                    index === activeTestimonial ? 'translate-x-0' : 'translate-x-full'
-                  }`}
-                >
-                  <Card variant="glass" className="text-center max-w-2xl mx-auto">
-                    <div className="text-6xl mb-6">{testimonial.image}</div>
-                    <blockquote className="text-xl mb-6 italic">
-                      "{testimonial.quote}"
-                    </blockquote>
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-muted">{testimonial.role} at {testimonial.company}</p>
-                    </div>
-                  </Card>
-                </div>
+                index === activeTestimonial && (
+                  <motion.div
+                    key={index}
+                    className="w-full flex-shrink-0"
+                    initial={{ opacity: 0, x: 100, scale: 0.8 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -100, scale: 0.8 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  >
+                    <Card variant="glass" className="text-center max-w-2xl mx-auto">
+                      <motion.div 
+                        className="text-6xl mb-6"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 200 }}
+                      >
+                        {testimonial.image}
+                      </motion.div>
+                      <motion.blockquote 
+                        className="text-xl mb-6 italic"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                      >
+                        "{testimonial.quote}"
+                      </motion.blockquote>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                      >
+                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="text-muted">{testimonial.role} at {testimonial.company}</p>
+                      </motion.div>
+                    </Card>
+                  </motion.div>
+                )
               ))}
-            </div>
+            </AnimatePresence>
             
             <div className="flex justify-center mt-8 space-x-2">
               {testimonials.map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => setActiveTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
+                  className={`w-3 h-3 rounded-full ${
                     index === activeTestimonial ? 'bg-primary' : 'bg-muted'
                   }`}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
+                  animate={{
+                    scale: index === activeTestimonial ? 1.2 : 1,
+                    backgroundColor: index === activeTestimonial ? 'var(--primary)' : 'var(--muted)'
+                  }}
+                  transition={{ duration: 0.3 }}
                 />
               ))}
             </div>
@@ -391,7 +709,21 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
             {[
               {
                 title: "AI Marketing Trends 2025",
@@ -415,22 +747,57 @@ export default function Home() {
                 image: "🎨"
               }
             ].map((post, index) => (
-              <Card key={index} variant="glass" className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="text-4xl mb-4">{post.image}</div>
-                <div className="flex items-center space-x-2 mb-3">
-                  <Badge variant="primary" className="text-xs">
-                    {post.category}
-                  </Badge>
-                  <span className="text-xs text-muted">{post.readTime}</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{post.title}</h3>
-                <p className="text-muted mb-4">{post.excerpt}</p>
-                <Button variant="outline" size="sm">
-                  Read More →
-                </Button>
-              </Card>
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 50, scale: 0.9 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: {
+                      duration: 0.6,
+                      ease: "easeOut"
+                    }
+                  }
+                }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <Card variant="glass">
+                  <motion.div 
+                    className="text-4xl mb-4"
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.2
+                    }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {post.image}
+                  </motion.div>
+                  <div className="flex items-center space-x-2 mb-3">
+                    <Badge variant="primary" className="text-xs">
+                      {post.category}
+                    </Badge>
+                    <span className="text-xs text-muted">{post.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">{post.title}</h3>
+                  <p className="text-muted mb-4">{post.excerpt}</p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button variant="outline" size="sm">
+                      Read More →
+                    </Button>
+                  </motion.div>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           
           <div className="text-center mt-12">
             <Button variant="outline" size="lg">
