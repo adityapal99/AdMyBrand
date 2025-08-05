@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button, Card, Input, Checkbox, Select, Badge } from "../../components/ui";
+import { Button, Card, Input, Checkbox, Badge } from "../../components/ui";
 
 interface PricingPlan {
   name: string;
@@ -427,13 +427,6 @@ export default function PricingCalculator() {
                   const formData = new FormData(e.currentTarget);
                   const email = formData.get('email') as string;
                   if (email && email.includes('@')) {
-                    const estimate = {
-                      plan: selectedPlan,
-                      users: userCount,
-                      addOns: selectedAddOns,
-                      totalPrice: totalPrice,
-                      features: selectedFeatures
-                    };
                     alert(`Estimate sent to ${email}!\n\nPlan: ${selectedPlan}\nUsers: ${userCount}\nTotal: $${totalPrice}/month`);
                   }
                 }} className="space-y-4">

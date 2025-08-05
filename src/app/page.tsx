@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button, Card, Modal, Input, Badge } from "../components/ui";
 import { FeatureIcon } from "../components/landing";
@@ -10,11 +9,8 @@ import { FeatureIcon } from "../components/landing";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+
 
   const features = [
     {
@@ -109,7 +105,7 @@ export default function Home() {
       role: "Founder",
       company: "StartupXYZ",
       image: "👨‍💻",
-      quote: "The AI-powered content creation saves us hours every week. It's like having a full marketing team in one tool."
+      quote: "The AI-powered content creation saves us hours every week. It&apos;s like having a full marketing team in one tool."
     },
     {
       name: "Emily Rodriguez",
@@ -193,7 +189,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
-              Create stunning campaigns, automate workflows, and boost your brand's success with our AI-powered marketing suite.
+              Create stunning campaigns, automate workflows, and boost your brand&apos;s success with our AI-powered marketing suite.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
@@ -637,7 +633,7 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                       >
-                        "{testimonial.quote}"
+                        &quot;{testimonial.quote}&quot;
                       </motion.blockquote>
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}

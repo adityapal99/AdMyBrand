@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 export interface AvatarProps {
   src?: string;
@@ -24,7 +25,7 @@ export const Avatar = ({
   return (
     <div className={`${sizeClasses[size]} rounded-full overflow-hidden bg-secondary flex items-center justify-center ${className}`}>
       {src ? (
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+        <Image src={src} alt={alt} className="w-full h-full object-cover" />
       ) : (
         <span className="text-muted font-semibold">
           {alt.charAt(0).toUpperCase()}
