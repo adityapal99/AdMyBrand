@@ -9,6 +9,8 @@ A stunning, modern landing page for ADmyBRAND AI Suite - a fictional AI-powered 
 
 [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https://github.com/adityapal99/AdMyBrand.git)
 
+Deployed Page - [Click to Open](https://ad-my-brand-vercel.vercel.app/)
+
 ## ✨ Features
 
 ### Core Landing Page Sections
